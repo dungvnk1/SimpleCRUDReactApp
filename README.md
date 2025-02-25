@@ -1,7 +1,8 @@
 # Getting Started with Simple CRUD React App
 
 Main Screen:
-![image](https://github.com/user-attachments/assets/ed3c9ae6-12bf-40fd-be49-043a0d1d35ac)
+![image](https://github.com/user-attachments/assets/01cc3580-cfbc-45de-9c9b-1aa4a07c370c)
+![image](https://github.com/user-attachments/assets/2f5820e5-1a4c-4b27-b053-553e11846de4)
 
 Edit screen:
 ![image](https://github.com/user-attachments/assets/c8ac7ba5-5299-4746-9536-503834f4e4e1)

@@ -4,41 +4,29 @@ import { useAuth } from './AuthContext';
 const CustomerContext = createContext();
 
 export const CustomerProvider = ({ children }) => {
-  const { users } = useAuth();
-  const [customers, setCustomers] = useState(() => {
-    const saved = localStorage.getItem('customers');
-    return saved ? JSON.parse(saved) : [];
-  });
-
-  useEffect(() => {
-    const existingEmails = customers.map(c => c.email);
-    const newCustomers = users
-      .filter(u => !existingEmails.includes(u.email))
-      .map(u => ({ id: Date.now() + Math.random(), username: u.username, email: u.email }));
-    if (newCustomers.length > 0) {
-      setCustomers(prev => [...prev, ...newCustomers]);
-    }
-    // eslint-disable-next-line
-  }, [users]);
-
-  useEffect(() => {
-    localStorage.setItem('customers', JSON.stringify(customers));
-  }, [customers]);
+  const { users, setUsers, register } = useAuth();
 
   const addCustomer = (customer) => {
-    setCustomers([...customers, { id: Date.now(), ...customer }]);
+    register(customer.username, customer.password, customer.email);
   };
 
   const updateCustomer = (id, updatedCustomer) => {
-    setCustomers(customers.map(c => (c.id === id ? { ...c, ...updatedCustomer } : c)));
+    setUsers(prev => prev.map(u => 
+      u.id === id ? { ...u, ...updatedCustomer } : u
+    ));
   };
 
   const deleteCustomer = (id) => {
-    setCustomers(customers.filter(c => c.id !== id));
+    setUsers(prev => prev.filter(u => u.id !== id));
   };
 
   return (
-    <CustomerContext.Provider value={{ customers, addCustomer, updateCustomer, deleteCustomer }}>
+    <CustomerContext.Provider value={{ 
+      customers: users.filter(u => u.role === 'customer'),
+      addCustomer,
+      updateCustomer,
+      deleteCustomer 
+    }}>
       {children}
     </CustomerContext.Provider>
   );

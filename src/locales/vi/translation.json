@@ -1,0 +1,17 @@
+{
+ "customerManagement": "Quản lý khách hàng",
+ "login": "Đăng nhập",
+ "register": "Đăng ký",
+ "logout": "Đăng xuất",
+ "username": "Tên đăng nhập",
+ "password": "Mật khẩu",
+ "email": "Email",
+ "addCustomer": "Thêm khách hàng",
+ "updateCustomer": "Cập nhật khách hàng",
+ "save": "Lưu",
+ "cancel": "Hủy",
+ "actions": "Hành động",
+ "update": "Cập nhật",
+ "delete": "Xóa",
+ "confirmDelete": "Bạn có chắc chắn muốn xóa?"
+}

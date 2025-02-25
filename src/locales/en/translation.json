@@ -1,0 +1,17 @@
+{
+ "customerManagement": "Customer Management",
+ "login": "Login",
+ "register": "Register",
+ "logout": "Logout",
+ "username": "Username",
+ "password": "Password",
+ "email": "Email",
+ "addCustomer": "Add Customer",
+ "updateCustomer": "Update Customer",
+ "save": "Save",
+ "cancel": "Cancel",
+ "actions": "Actions",
+ "update": "Update",
+ "delete": "Delete",
+ "confirmDelete": "Are you sure to delete?"
+}

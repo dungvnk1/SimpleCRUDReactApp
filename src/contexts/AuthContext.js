@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect, useContext } from 'react';
 const AuthContext = createContext();
 
 const initialUsers = [
-  { username: 'admin', password: '123', email: 'admin@toancaugroup.com' }
+  { id: 1, username: 'admin', password: '123', email: 'admin@toancaugroup.com', role: 'admin' }
 ];
 
 export const AuthProvider = ({ children }) => {
@@ -32,8 +32,20 @@ export const AuthProvider = ({ children }) => {
     if (users.find(u => u.username === username)) {
       return false;
     }
-    const newUser = { username, password, email };
-    setUsers([...users, newUser]);
+
+    const newId = users.length > 0 
+      ? Math.max(...users.map(u => parseInt(u.id))) + 1 
+      : 1;
+
+    const newUser = { 
+      id: newId,
+      username, 
+      password, 
+      email,
+      role: 'customer'
+    };
+
+    setUsers(prev => [...prev, newUser]);
     return true;
   };
 
@@ -43,7 +55,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, users }}>
+    <AuthContext.Provider value={{ user, setUsers, login, logout, register, users }}>
       {children}
     </AuthContext.Provider>
   );

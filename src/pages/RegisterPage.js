@@ -6,7 +6,6 @@ import { useCustomers } from '../contexts/CustomerContext';
 
 const RegisterPage = () => {
   const { user, register } = useAuth();
-  const { addCustomer } = useCustomers();
   const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -18,7 +17,6 @@ const RegisterPage = () => {
   const handleRegister = () => {
     const success = register(username, password, email);
     if (success) {
-      addCustomer({ username: username, email });
       navigate('/');
     } else {
       setError('Username existed!');

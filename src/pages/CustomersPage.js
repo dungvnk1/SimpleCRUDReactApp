@@ -6,7 +6,7 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useCustomers } from '../contexts/CustomerContext';
-import CustomerCard from '../components/CustomerCard';
+import axios from '../api/axiosConfig';
 
 const CustomersPage = () => {
   const { t, i18n } = useTranslation();
@@ -24,13 +24,18 @@ const CustomersPage = () => {
 
   if (!user) return <Navigate to="/" replace />;
 
-  const handleAdd = () => {
+  const handleAdd = async () => {
     if (username && password && email) {
       const customer = { username, password, email };
-      addCustomer(customer);
-      setUserName('');
-      setPassword('');
-      setEmail('');
+      try {
+        await axios.post('/customers', customer);
+        setUserName('');
+        setPassword('');
+        setEmail('');
+      }
+      catch (error) {
+        console.error('Error creating customer:', error);
+      }
     }
   };
 

@@ -6,7 +6,6 @@ import { DataGrid } from '@mui/x-data-grid';
 import { Navigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { useCustomers } from '../contexts/CustomerContext';
-import axios from '../api/axiosConfig';
 
 const CustomersPage = () => {
   const { t, i18n } = useTranslation();
@@ -28,7 +27,13 @@ const CustomersPage = () => {
     if (username && password && email) {
       const customer = { username, password, email };
       try {
-        await axios.post('/customers', customer);
+        await fetch(`${process.env.REACT_APP_API_URL}/customers`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(customer),
+        });
         setUserName('');
         setPassword('');
         setEmail('');

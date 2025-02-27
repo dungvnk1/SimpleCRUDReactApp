@@ -14,3 +14,8 @@ Login Screen:
 Register Screen:
 
 ![image](https://github.com/user-attachments/assets/954ef4b2-60d8-4b6c-adcc-b1d293413ac4)
+
+Connecting with backend:
+![image](https://github.com/user-attachments/assets/90f5bbed-011e-437f-b531-cc776574246b)
+![image](https://github.com/user-attachments/assets/6c487165-fafa-4fea-a786-096118d66f3b)
+

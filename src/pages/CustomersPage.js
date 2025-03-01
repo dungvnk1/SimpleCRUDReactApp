@@ -14,6 +14,7 @@ const CustomersPage = () => {
   const [username, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
+  const [file, setFile] = useState(null);
 
   const [openDialog, setOpenDialog] = useState(false);
   const [editCustomer, setEditCustomer] = useState(null);
@@ -65,6 +66,27 @@ const CustomersPage = () => {
         email: editEmail,
       });
       handleDialogClose();
+    }
+  };
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    if (file) {
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        await fetch(`${process.env.REACT_APP_API_URL}/upload`, {
+          method: 'POST',
+          body: formData,
+        });
+        setFile(null);
+      } catch (error) {
+        console.error('Error uploading file:', error);
+      }
     }
   };
 
@@ -176,6 +198,19 @@ const CustomersPage = () => {
         />
       </div>
       
+      <Typography variant="h6" gutterBottom>{t('uploadFile')}</Typography>
+      <input
+        type="file"
+        onChange={handleFileChange}
+      />
+      <Button
+        variant="contained"
+        onClick={handleUpload}
+        sx={{ mt: 2 }}
+      >
+        {t('upload')}
+      </Button>
+
       <Dialog open={openDialog} onClose={handleDialogClose}>
         <DialogTitle>{t('updateCustomer')}</DialogTitle>
         <DialogContent>

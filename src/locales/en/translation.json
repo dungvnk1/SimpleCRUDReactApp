@@ -13,5 +13,7 @@
  "actions": "Actions",
  "update": "Update",
  "delete": "Delete",
- "confirmDelete": "Are you sure to delete?"
+ "confirmDelete": "Are you sure to delete?",
+ "uploadFile": "Upload File",
+ "upload": "Upload"
 }

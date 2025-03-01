@@ -13,5 +13,7 @@
  "actions": "Hành động",
  "update": "Cập nhật",
  "delete": "Xóa",
- "confirmDelete": "Bạn có chắc chắn muốn xóa?"
+ "confirmDelete": "Bạn có chắc chắn muốn xóa?",
+ "uploadFile": "Tải lên tệp",
+ "upload": "Tải lên"
 }
